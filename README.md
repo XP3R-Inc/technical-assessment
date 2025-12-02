@@ -63,6 +63,15 @@ If the interviewee prefers a GUI to validate query results, point them to the ne
 
 Use the same credentials stored in `.env` when configuring Beekeeper Studio.
 
+### Required Git / .env Workflow
+
+Every candidate should follow the steps in `docs/workflow.md`:
+
+- Clone the repository and create a personal feature branch such as `feature/<lastname>-assessment`.
+- Copy `.env.example` to `.env`, fill in the credentials you provide, and export `ENV_FILE` so the FastAPI app can load the file.
+- Install dependencies with Python 3.13 inside a virtual environment, then run `uvicorn app.main:app --reload --port 8000`.
+- Commit frequently, push to origin, and be ready to share the branch or PR at the end of the session.
+
 ## Verifying the Server
 
 Use `curl` or a browser to confirm the service is up. Both challenge endpoints currently return `501 Not Implemented` until the interviewee writes the logic.
