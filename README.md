@@ -6,7 +6,7 @@ the interviewee must complete during the exercise.
 
 ## Requirements (What you need installed)
 
-- Python 3.11 (or newer) plus `pip`
+- Python 3.13 (or newer) plus `pip`
 - Ability to create a virtual environment (`python -m venv`)
 - Git (required; you will need to clone this repository and build on it)
 - Network access to a MySQL 8.x database (we will provide AWS RDS configuration values at the interview start)
@@ -36,6 +36,8 @@ variable (defaults to `.env` in the repo root).
    source .venv/bin/activate        # macOS/Linux
    .\.venv\Scripts\activate         # Windows PowerShell
    ```
+   Ensure `python --version` reports **3.13.x** before creating the virtual
+   environment so the dependencies install correctly.
 2. **Install dependencies**
    ```bash
    pip install --upgrade pip
