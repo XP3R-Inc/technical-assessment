@@ -30,11 +30,11 @@ def create_opportunities(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Customer with cid={payload.cid} does not exist."
         )
-    oid = uuid4.hex
+    oid = uuid4().hex
 
     opp = Opportunities(
-        oid:oid,
-        cid:payload.cid
+        oid=oid,
+        cid=payload.cid,
         opportunity_status=payload.opportunity_status,
         estimated_monthly_revenue=payload.estimated_monthly_revenue,
         estimated_delivery_date=payload.estimated_delivery_date,
