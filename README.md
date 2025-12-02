@@ -57,6 +57,17 @@ variable (defaults to `.env` in the repo root).
    ```
    The interactive docs are available at `http://localhost:8000/docs`.
 
+### (Optional) Inspecting the Data with Beekeeper Studio
+
+If the interviewee prefers a GUI to validate query results, point them to the
+new Beekeeper docs:
+
+- `docs/beekeeper_install.md` explains how to download and install the tool.
+- `docs/beekeeper_view_data.md` covers creating a MySQL connection, browsing the
+  `customer` / `crm_opportunities` tables, and running SQL queries.
+
+Use the same credentials stored in `.env` when configuring Beekeeper Studio.
+
 ## Verifying the Server
 
 Use `curl` or a browser to confirm the service is up. Both challenge endpoints
