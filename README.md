@@ -9,7 +9,7 @@ Python FastAPI backend used to evaluate how candidates design database-backed AP
 - Git (required; you will need to clone this repository and build on it)
 - Network access to a MySQL 8.x database (we will provide AWS RDS configuration values at the interview start)
 
-### Required Git / .env Workflow
+## Required Git / .env Workflow
 
 Every candidate should follow the steps in `docs/workflow.md`:
 
