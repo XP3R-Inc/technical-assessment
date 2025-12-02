@@ -9,6 +9,15 @@ Python FastAPI backend used to evaluate how candidates design database-backed AP
 - Git (required; you will need to clone this repository and build on it)
 - Network access to a MySQL 8.x database (we will provide AWS RDS configuration values at the interview start)
 
+### Required Git / .env Workflow
+
+Every candidate should follow the steps in `docs/workflow.md`:
+
+- Clone the repository and create a personal feature branch such as `feature/<lastname>-assessment`.
+- Copy `.env.example` to `.env`, fill in the credentials you provide, and export `ENV_FILE` so the FastAPI app can load the file.
+- Install dependencies with Python 3.13 inside a virtual environment, then run `uvicorn app.main:app --reload --port 8000`.
+- Commit frequently, push to origin, and be ready to share the branch or PR at the end of the session.
+
 ## Configuration
 
 All configuration is driven by environment variables that can be stored in an `.env` file. The application looks for that file via the `ENV_FILE` environment variable (defaults to `.env` in the repo root).
@@ -62,15 +71,6 @@ If the interviewee prefers a GUI to validate query results, point them to the ne
   `customer` / `crm_opportunities` tables, and running SQL queries.
 
 Use the same credentials stored in `.env` when configuring Beekeeper Studio.
-
-### Required Git / .env Workflow
-
-Every candidate should follow the steps in `docs/workflow.md`:
-
-- Clone the repository and create a personal feature branch such as `feature/<lastname>-assessment`.
-- Copy `.env.example` to `.env`, fill in the credentials you provide, and export `ENV_FILE` so the FastAPI app can load the file.
-- Install dependencies with Python 3.13 inside a virtual environment, then run `uvicorn app.main:app --reload --port 8000`.
-- Commit frequently, push to origin, and be ready to share the branch or PR at the end of the session.
 
 ## Verifying the Server
 
