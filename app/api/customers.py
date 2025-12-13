@@ -15,7 +15,7 @@ router = APIRouter()
 
 
 @router.get("", response_model=List[CustomerRead])
-async def list_customers(db: Session = Depends(get_db)) -> List[CustomerRead]:
+def list_customers(db: Session = Depends(get_db)) -> List[CustomerRead]:
     """Challenge 1 – fetch every customer from MySQL."""
     return db.query(Customer).all()
     """
