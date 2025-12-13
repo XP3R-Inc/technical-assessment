@@ -24,10 +24,7 @@ def create_opportunity(
 ) -> OpportunityRead:
     """Challenge 2 – create a CRM opportunity tied to a customer."""
 
-    newOpp = CrmOpportunity(
-    oid=str(uuid.uuid4()),
-    **payload.model_dump()
-)
+    newOpp = CrmOpportunity(oid=str(uuid.uuid4()).replace('-', ''), **payload.model_dump())
     db.add(newOpp)
     db.commit()
     db.refresh(newOpp)

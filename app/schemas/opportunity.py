@@ -43,7 +43,7 @@ class OpportunityRead(OpportunityBase):
     non_recurring: str | None = Field(default=None, max_length=32)
     days_since_last_updated: int | None = Field(default=None, ge=0)
 
-    oid: string
+    oid: str
 
     model_config = {"from_attributes": True}
 
