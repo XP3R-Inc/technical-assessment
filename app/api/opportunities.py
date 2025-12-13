@@ -7,6 +7,9 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from app.schemas.opportunity import OpportunityCreate, OpportunityRead
+from app.models.opportunity import CrmOpportunity
+
+import uuid
 
 router = APIRouter()
 
@@ -20,6 +23,18 @@ def create_opportunity(
     payload: OpportunityCreate, db: Session = Depends(get_db)
 ) -> OpportunityRead:
     """Challenge 2 – create a CRM opportunity tied to a customer."""
+
+    newOpp = CrmOpportunity(
+    oid=str(uuid.uuid4()),
+    **payload.model_dump()
+)
+    db.add(newOpp)
+    db.commit()
+    db.refresh(newOpp)
+    #return returnValue[returnValue.length()-1]
+    return newOpp
+
+    """
     raise HTTPException(
         status_code=status.HTTP_501_NOT_IMPLEMENTED,
         detail=(
@@ -28,5 +43,6 @@ def create_opportunity(
             "See README for the step-by-step outline."
         ),
     )
+    """
 
 
