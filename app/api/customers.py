@@ -9,13 +9,16 @@ from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from app.schemas.customer import CustomerRead
+from app.models.customer import Customer
 
 router = APIRouter()
 
 
 @router.get("", response_model=List[CustomerRead])
-def list_customers(db: Session = Depends(get_db)) -> List[CustomerRead]:
+async def list_customers(db: Session = Depends(get_db)) -> List[CustomerRead]:
     """Challenge 1 – fetch every customer from MySQL."""
+    return db.query(Customer).all()
+    """
     raise HTTPException(
         status_code=status.HTTP_501_NOT_IMPLEMENTED,
         detail=(
@@ -23,5 +26,6 @@ def list_customers(db: Session = Depends(get_db)) -> List[CustomerRead]:
             "`CustomerRead` schema. See README for full instructions."
         ),
     )
+    """
 
 
