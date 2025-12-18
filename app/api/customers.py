@@ -10,18 +10,23 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.schemas.customer import CustomerRead
 
+from sqlalchemy import select
+from sqlalchemy.exc import SQLAlchemyError
+
+from app.models.customer import Customer
 router = APIRouter()
 
 
 @router.get("", response_model=List[CustomerRead])
 def list_customers(db: Session = Depends(get_db)) -> List[CustomerRead]:
     """Challenge 1 – fetch every customer from MySQL."""
-    raise HTTPException(
-        status_code=status.HTTP_501_NOT_IMPLEMENTED,
-        detail=(
-            "Challenge 1: Query the `customer` table and return every row using the "
-            "`CustomerRead` schema. See README for full instructions."
-        ),
-    )
-
+    try:
+        customers = db.execute(select(Customer)).scalars().all()
+        return customers
+    except SQLAlchemyError as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Database error while fetching customers.",
+        ) from e
 
